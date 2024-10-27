@@ -110,7 +110,6 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           aws eks update-kubeconfig --name cluster --region us-east-1
-          kubectl get svc
           export EXTERNALIP=$(kubectl get svc backend -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}{"\n"}{.status.loadBalancer.ingress[0].ip}')
           echo "EXTERNALIP=$EXTERNALIP"
           docker build --build-arg REACT_APP_MOVIE_API_URL=http://$EXTERNALIP -t ${{env.IMAGE_REPO_NAME}}:${{env.IMAGE_TAG}} .
