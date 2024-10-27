@@ -19,6 +19,7 @@ env:
 jobs:
   debug:
     name: Debug AWS Credentials
+    runs-on: ubuntu-latest
     steps:
     - name: debugßß
       run: |
