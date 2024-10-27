@@ -104,8 +104,7 @@ jobs:
           
       - name: Build and Push Docker Image
         run: |
-          aws eks update-kubeconfig --name cluster --region us-east-1
-          kubectl get svc
+          aws eks update-kubeconfig --name cluster --region us-east-1   
           docker build -t ${{env.IMAGE_REPO_NAME}} .
           docker tag ${{env.IMAGE_REPO_NAME}}:${{env.IMAGE_TAG}} 066350390945.dkr.ecr.us-east-1.amazonaws.com/${{env.IMAGE_REPO_NAME}}:${{env.IMAGE_TAG}}
           docker push 066350390945.dkr.ecr.us-east-1.amazonaws.com/${{env.IMAGE_REPO_NAME}}:${{env.IMAGE_TAG}}
